@@ -7,6 +7,20 @@ const generateMarkdown = require('./utils/generateMarkdown.js');
 const questions = [
     {
         type: 'input',
+        name: 'github',
+        message: 'What is your GitHub Username? (Required)',
+        validate: githubInput => {
+            if (githubInput) {
+              return true;
+            }
+            else {
+              console.log('Please enter your GitHub Username.');
+              return false;
+            }
+        }
+    },
+    {
+        type: 'input',
         name: 'title',
         message: 'What is the title of your project? (Required)',
         validate: titleInput => {
@@ -17,7 +31,7 @@ const questions = [
               console.log('Please enter a title.');
               return false;
             }
-          }
+        }
     },
     {
         type: 'input',
@@ -112,21 +126,8 @@ const questions = [
     {
         type: 'confirm',
         name: 'confirmQuestions',
-        message: 'Would you like to enter some contact information so that you can be reached for "Questions" about this project?',
+        message: 'Would you like to include contact information so that you can be reached for "Questions" about this project?',
         default: true
-    },
-    {
-        type: 'input',
-        name: 'github',
-        message: 'What is your GitHub Username?',
-        when: ({ confirmQuestions }) => {
-          if (confirmQuestions) {
-            return true;
-          } 
-          else {
-            return false;
-          }
-        }
     },
     {
         type: 'confirm',
@@ -159,9 +160,20 @@ const questions = [
         type: 'list',
         name: 'license',
         message: 'Choose your license from the list below:',
-        choices: ['Apache License 2.0', 'GNU General Public License v3.0','MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v2.1', 'Mozilla Public License 2.0', 'The Unlicense', 'none']
+        choices: ['Apache License 2.0', 'GNU General Public License v3.0','MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v3.0', 'Mozilla Public License 2.0', 'The Unlicense', 'none']
     },
 ];
+
+const promptContributors = projectData => {
+    if (!projectData.contributors) {
+        projectData.contributors = [];
+    }
+    console.log(`
+    =====================
+    Add a New Contributor
+    =====================
+    `)
+}
 
 // function to write README file
 function writeToFile(fileName, data) {
