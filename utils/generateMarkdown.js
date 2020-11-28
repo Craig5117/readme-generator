@@ -8,7 +8,9 @@ const generateInstallation = installInstructions => {
 
 ## Installation
 
-${installInstructions}`
+${installInstructions}
+
+[Back to Contents](#table-of-contents)`
 };
 
 const generateUsage = usageInstructions => {
@@ -21,7 +23,9 @@ const generateUsage = usageInstructions => {
 
 ## Usage
 
-${usageInstructions}`
+${usageInstructions}
+
+[Back to Contents](#table-of-contents)`
 };
 
 const generateContributing = contribGuidelines => {
@@ -34,7 +38,9 @@ const generateContributing = contribGuidelines => {
 
 ## Contributing
 
-${contribGuidelines}`
+${contribGuidelines}
+
+[Back to Contents](#table-of-contents)`
 }
 const generateTesting = testCommand => {
   if (!testCommand) {
@@ -46,7 +52,9 @@ const generateTesting = testCommand => {
 
 ## Testing
 
-`+ 'Run ' + '`' + testCommand + '`' + ' to test.'
+`+ 'Run ' + '`' + testCommand + '`' + ' to test.' + `
+
+[Back to Contents](#table-of-contents)`
 }
 
 const getLicenseBadge = license => {
@@ -108,14 +116,15 @@ const generateLicense = license => {
 
 ## License
 
-This project is covered under the ${license}.`
+This project is covered under the ${license}.
+
+[Back to Contents](#table-of-contents)`
 }
 
 const generateContributors = (confirmation, contributorsInfo) => {
   if (!confirmation) {
     return '';
   }
-  console.log(contributorsInfo)
   return `
   
 ---
@@ -133,11 +142,11 @@ ${contributor}
 [${contGithub}](https://github.com/${contGithub})`
   }).join('')}
 
+[Back to Contents](#table-of-contents)
 ---`
 }
 
 const generateQuestions = (confirmQuestions, github, email) => {
-  console.log(confirmQuestions)
   if (!confirmQuestions) {
     return '';
   }
@@ -154,7 +163,9 @@ If you have any questions, contact me at:
 
 [GitHub](https://github.com/${github})
   
-${email}`
+${email}
+
+[Back to Contents](#table-of-contents)`
 }
 
 const generateContents = data => {
