@@ -111,9 +111,34 @@ const generateLicense = license => {
 This project is covered under the ${license}.`
 }
 
+const generateContributors = (confirmation, contributorsInfo) => {
+  if (!confirmation) {
+    return '';
+  }
+  console.log(contributorsInfo)
+  return `
+  
+---
+
+## Contributors
+
+${ contributorsInfo.map(({contributor, contGithub}) => {
+    return `
+---
+---
+    
+${contributor}
+    
+[${contGithub}](https://github.com/${contGithub})`
+  }).join('')}
+
+---`
+}
+
 const generateQuestions = (confirmQuestions, github, email) => {
+  console.log(confirmQuestions)
   if (!confirmQuestions) {
-    return;
+    return '';
   }
   if (!email) {
     email = '';
@@ -183,7 +208,7 @@ ${getLicenseBadge(data.license)}
 ---
 
 ## Contents 
-${generateContents(data)}${generateInstallation(data.installation)}${generateUsage(data.usage)}${generateContributing(data.contributing)}${generateTesting(data.testing)}${generateLicense(data.license)}${generateQuestions(data.confirmQuestions, data.github, data.email)}
+${generateContents(data)}${generateInstallation(data.installation)}${generateUsage(data.usage)}${generateContributing(data.contributing)}${generateTesting(data.testing)}${generateLicense(data.license)}${generateContributors(data.confirmContributors, data.contributors)}${generateQuestions(data.confirmQuestions, data.github, data.email)}
 `;
 }
 

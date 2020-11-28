@@ -162,17 +162,92 @@ const questions = [
         message: 'Choose your license from the list below:',
         choices: ['Apache License 2.0', 'GNU General Public License v3.0','MIT License', 'BSD 2-Clause "Simplified" License', 'BSD 3-Clause "New" or "Revised" License', 'Boost Software License 1.0', 'Creative Commons Zero v1.0 Universal', 'Eclipse Public License 2.0', 'GNU Affero General Public License v3.0', 'GNU General Public License v2.0', 'GNU Lesser General Public License v3.0', 'Mozilla Public License 2.0', 'The Unlicense', 'none']
     },
+    {
+        type: 'confirm',
+        name: 'confirmContributors',
+        message: 'Would you like to add contributors to this project in a "Contributors" section?',
+        default: false
+    }
 ];
 
 const promptContributors = projectData => {
-    if (!projectData.contributors) {
-        projectData.contributors = [];
+    if (!projectData.confirmContributors) {
+        return projectData
     }
-    console.log(`
-    =====================
-    Add a New Contributor
-    =====================
-    `)
+    else{
+        if (!projectData.contributors) {
+            projectData.contributors = [];
+        }
+        console.log(`
+        =====================
+        Add a New Contributor
+        =====================
+        `);
+        return inquirer.prompt([
+            {
+                type: 'input',
+                name: 'contributor',
+                message: 'What is the name of the contributor?',
+                validate: contributorInput => {
+                    if (contributorInput) {
+                    return true;
+                    }
+                    else {
+                    console.log('Please enter a name.');
+                    return false;
+                    }
+                }
+            },
+            {
+                type: 'input',
+                name: 'contGithub',
+                message: "What is the contributor's GitHub Username? (Required)",
+                validate: contGithubInput => {
+                    if (contGithubInput) {
+                    return true;
+                    }
+                    else {
+                    console.log('Please enter a name.');
+                    return false;
+                    }
+                }
+            },
+            // {
+            //     type: 'confirm',
+            //     name: 'confirmContEmail',
+            //     message: "Would you like to include the contributor's email address?",
+            //     default: true
+            // },
+            // {
+            //     type: 'input',
+            //     name: 'contEmail',
+            //     message: "What is the contributor's email address?",
+            //     when: ({ confirmContEmail }) => {
+            //       if (confirmContEmail) {
+            //         return true;
+            //       } 
+            //       else {
+            //         return false;
+            //       }
+            //     }
+            // },
+            {
+                type: 'confirm',
+                name: 'confirmAddContributor',
+                message: 'Would you like to enter another contributor?',
+                default: false,
+            },
+        ])
+        .then(contributorData => {
+            projectData.contributors.push(contributorData);
+            if (contributorData.confirmAddContributor) {
+            return promptContributors(projectData);
+            }
+            else {
+            return projectData;
+            }
+        })
+    }
 }
 
 // function to write README file
@@ -189,6 +264,7 @@ const init = () => {
 
 // function call to initialize program
 init()
+.then(promptContributors)
 .then(answers => {
     return generateMarkdown(answers);
 })
