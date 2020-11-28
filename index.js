@@ -252,6 +252,10 @@ const promptContributors = projectData => {
 
 // function to write README file
 function writeToFile(fileName, data) {
+    console.log("Generating README...")
+    fs.writeFile(fileName, data, err => {
+        if (err) console.log(err)
+    })
 }
 
 // function to initialize program
@@ -263,11 +267,22 @@ const init = () => {
 };
 
 // function call to initialize program
-init()
-.then(promptContributors)
-.then(answers => {
-    return generateMarkdown(answers);
-})
-.then(markdown => {
-    console.log(markdown);
-});
+// init()
+// .then(promptContributors)
+// .then(answers => {
+//     return generateMarkdown(answers);
+// })
+// .then(markdown => {
+//     return writeToFile('./dist/README.md', markdown)
+// });
+(async function app() {
+    try {
+        const projectData = await init();
+        const answers = await promptContributors(projectData);
+        const markdown = await generateMarkdown(answers);
+        await writeToFile('./dist/README.md', markdown);
+        
+    } catch (error) {
+       if (error) console.log(error) 
+    }
+})();

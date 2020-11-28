@@ -124,6 +124,7 @@ const generateContributors = (confirmation, contributorsInfo) => {
 
 ${ contributorsInfo.map(({contributor, contGithub}) => {
     return `
+
 ---
 ---
     
@@ -150,6 +151,7 @@ const generateQuestions = (confirmQuestions, github, email) => {
 ## Questions
 
 If you have any questions, contact me at:
+
 [GitHub](https://github.com/${github})
   
 ${email}`
@@ -167,6 +169,8 @@ const generateContents = data => {
 - [Testing](#testing)`;
   let licenseLink = `
 - [License](#license)`
+  let contributorsLink = `
+- [Contributors](#contributors)`
   let questionsLink = `
 - [Questions](#questions)`;
   if (data.confirmInstallation) {
@@ -187,6 +191,10 @@ const generateContents = data => {
  
   if (data.license != "none") {
     contents = contents + licenseLink;
+  }
+
+  if (data.confirmContributors) {
+    contents = contents + contributorsLink;
   }
 
   if (data.confirmQuestions) {
