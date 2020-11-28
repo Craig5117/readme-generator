@@ -74,13 +74,13 @@ const questions = [
     {
         type: 'confirm',
         name: 'confirmContributing',
-        message: 'Would you like to enter contribution instructions for a "Contributing" section?',
+        message: 'Would you like to enter contribution guidelines for a "Contributing" section?',
         default: true
     },
     {
         type: 'input',
         name: 'contributing',
-        message: 'What are the contribution instructions for your project?',
+        message: 'What are the contribution guidelines for your project?',
         when: ({ confirmContributing }) => {
           if (confirmContributing) {
             return true;
@@ -93,13 +93,13 @@ const questions = [
     {
         type: 'confirm',
         name: 'confirmTesting',
-        message: 'Would you like to enter testing instructions for a "Testing" section?',
+        message: 'Do you have a test you would like to include in a "Testing" section?',
         default: true
     },
     {
         type: 'input',
         name: 'testing',
-        message: 'What are the testing instructions for your project?',
+        message: 'Type the command to run your test:',
         when: ({ confirmTesting }) => {
           if (confirmTesting) {
             return true;
@@ -117,7 +117,7 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'githubUsername',
+        name: 'github',
         message: 'What is your GitHub Username?',
         when: ({ confirmQuestions }) => {
           if (confirmQuestions) {
