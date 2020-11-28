@@ -1,4 +1,8 @@
 const inquirer = require('inquirer');
+
+const fs = require('fs');
+
+const generateMarkdown = require('./utils/generateMarkdown.js');
 // array of questions for user
 const questions = [
     {
@@ -88,16 +92,16 @@ const questions = [
     },
     {
         type: 'confirm',
-        name: 'confirmTests',
-        message: 'Would you like to enter testing instructions for a "Tests" section?',
+        name: 'confirmTesting',
+        message: 'Would you like to enter testing instructions for a "Testing" section?',
         default: true
     },
     {
         type: 'input',
-        name: 'tests',
+        name: 'testing',
         message: 'What are the testing instructions for your project?',
-        when: ({ confirmTests }) => {
-          if (confirmTests) {
+        when: ({ confirmTesting }) => {
+          if (confirmTesting) {
             return true;
           } 
           else {
@@ -152,12 +156,6 @@ const questions = [
         }
     },
     {
-        type: 'confirm',
-        name: 'confirmLicense',
-        message: 'Would you like to include a license for this project?',
-        default: true
-    },
-    {
         type: 'list',
         name: 'license',
         message: 'Choose your license from the list below:',
@@ -180,5 +178,8 @@ const init = () => {
 // function call to initialize program
 init()
 .then(answers => {
-    console.log(answers);
+    return generateMarkdown(answers);
+})
+.then(markdown => {
+    console.log(markdown);
 });
