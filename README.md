@@ -46,8 +46,8 @@ To use ReadMe Generator, first open your terminal to the root directory that con
 ---
     
 Craig Bennett
-    
-[Craig5117](https://github.com/Craig5117)
+
+<a href="https://github.com/Craig5117" target="_blank">Craig5117</a>
 
 [LinkedIn](https://www.linkedin.com/in/craig-bennett-852a571b4/)
 
