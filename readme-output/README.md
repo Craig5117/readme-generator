@@ -1,9 +1,9 @@
-# f
+# Glorp
 ## Description 
 
-f
+Glorp is an application that does things.
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ---
 
@@ -11,7 +11,6 @@ f
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Contributing](#contributing)
 - [Testing](#testing)
 - [License](#license)
 - [Contributors](#contributors)
@@ -21,7 +20,7 @@ f
 
 ## Installation
 
-f
+This is how you install Glorp...
 
 [Back to Contents](#table-of-contents)
 
@@ -29,15 +28,7 @@ f
 
 ## Usage
 
-f
-
-[Back to Contents](#table-of-contents)
-
----
-
-## Contributing
-
-f
+This is how you use Glorp...
 
 [Back to Contents](#table-of-contents)
 
@@ -45,7 +36,7 @@ f
 
 ## Testing
 
-Run `f` to test.
+Run `npm test` to test.
 
 [Back to Contents](#table-of-contents)
 
@@ -53,7 +44,7 @@ Run `f` to test.
 
 ## License
 
-This project is covered under the Apache License 2.0.
+This project is covered under the MIT License.
 
 [Back to Contents](#table-of-contents)
   
@@ -66,16 +57,23 @@ This project is covered under the Apache License 2.0.
 ---
 ---
     
-f
+Craig Bennett
     
-[f](https://github.com/f)
+[Craig5117](https://github.com/Craig5117)
 
 ---
 ---
     
-g
+Bob
     
-[g](https://github.com/g)
+[BobHub](https://github.com/BobHub)
+
+---
+---
+    
+Kate
+    
+[KateHub](https://github.com/KateHub)
 
 ---
 ---
@@ -88,8 +86,8 @@ g
 
 If you have any questions, contact me at:
 
-[GitHub](https://github.com/f)
+[GitHub](https://github.com/Craig5117)
   
-f
+myname@email.com
 
 [Back to Contents](#table-of-contents)

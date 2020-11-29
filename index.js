@@ -273,14 +273,14 @@ const init = () => {
 //     return generateMarkdown(answers);
 // })
 // .then(markdown => {
-//     return writeToFile('./dist/README.md', markdown)
+//     return writeToFile('./readme-output/README.md', markdown)
 // });
 (async function app() {
     try {
         const projectData = await init();
         const answers = await promptContributors(projectData);
         const markdown = await generateMarkdown(answers);
-        await writeToFile('./dist/README.md', markdown);
+        await writeToFile('./readme-output/README.md', markdown);
         
     } catch (error) {
        if (error) console.log(error) 
