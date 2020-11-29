@@ -142,8 +142,10 @@ ${contributor}
 [${contGithub}](https://github.com/${contGithub})`
   }).join('')}
 
-[Back to Contents](#table-of-contents)
----`
+---
+---
+
+[Back to Contents](#table-of-contents)`
 }
 
 const generateQuestions = (confirmQuestions, github, email) => {
@@ -226,7 +228,7 @@ ${getLicenseBadge(data.license)}
 
 ---
 
-## Contents 
+## Table of Contents 
 ${generateContents(data)}${generateInstallation(data.installation)}${generateUsage(data.usage)}${generateContributing(data.contributing)}${generateTesting(data.testing)}${generateLicense(data.license)}${generateContributors(data.confirmContributors, data.contributors)}${generateQuestions(data.confirmQuestions, data.github, data.email)}
 `;
 }
